@@ -58,9 +58,10 @@ public class Bot {
                 Commands.slash("profil","Affiche vos stats du serveur")
                         .addOption(OptionType.USER,"membre","Affiche les stats d'une autre personne du serveur").setContexts(InteractionContextType.GUILD),
                 Commands.slash("test","baka").setContexts(InteractionContextType.GUILD),
+                Commands.slash("info","donne des information sur le bot").setContexts(InteractionContextType.ALL),
                 Commands.slash("activitervocale","Affiche le détailles des membres en voc (mais vraiment tous !) (seulement si l'option est activer)")
-                                .addSubcommands(new SubcommandData("default","toutes les valeurs par défault"))
-                                .addSubcommands(new SubcommandData("limite","vous permet de changer la valeur max").addOptions(new OptionData(OptionType.INTEGER,"limite","permet de changer la limite max (max 25)",true).setRequiredRange(1,25))),
+                                .addSubcommands(new SubcommandData("default","toutes les valeurs par défault")).setContexts(InteractionContextType.GUILD)
+                                .addSubcommands(new SubcommandData("limite","vous permet de changer la valeur max").addOptions(new OptionData(OptionType.INTEGER,"limite","permet de changer la limite max (max 25)",true).setRequiredRange(1,25))).setContexts(InteractionContextType.GUILD),
                 Commands.slash("adminreg","Enregistrer toutes les personne déjà présente ! (utile pour un serveur déjà remplis de membre)").setContexts(InteractionContextType.GUILD).setDefaultPermissions(DefaultMemberPermissions.enabledFor(Permission.ADMINISTRATOR)),
                 Commands.slash("verifyreg","Verifier si vous êtes bien enregister !").setContexts(InteractionContextType.GUILD)).queue();
         for(Guild i : api.getGuilds())

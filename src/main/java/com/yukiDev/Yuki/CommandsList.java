@@ -2,17 +2,23 @@ package com.yukiDev.Yuki;
 
 import com.mongodb.client.model.Projections;
 import com.mongodb.client.result.InsertOneResult;
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.interactions.commands.Command;
+import net.dv8tion.jda.api.interactions.commands.build.Commands;
+import net.dv8tion.jda.api.requests.RestAction;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.awt.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static com.yukiDev.Yuki.Bot.*;
@@ -38,6 +44,9 @@ public class CommandsList extends ListenerAdapter
             case "test":
                 test(event);
                 break;
+            case "info":
+                info(event);
+                break;
             case "activitervocale":
                 ActiviterVocal(event);
                 break;
@@ -53,6 +62,20 @@ public class CommandsList extends ListenerAdapter
         }
     }
 
+    private void info(SlashCommandInteractionEvent event) {
+        event.deferReply().queue();
+        event.getHook().sendMessageEmbeds(
+                new EmbedBuilder()
+                    .setAuthor("Yuki", "https://github.com/Lou-fr", api.getUserById("478641900887474206").getAvatarUrl())
+                    .setTitle("Yuka a propos ~~")
+                    .setDescription("Salut mwa c'est yuka un bot développer par yuki pour les serveurs d'amis ou bien les sien ^^\n\nJe suis coder en java et tu peux retrouver tous mon code sur [Github !](https://github.com/Lou-fr/Yuka_Discord_Bot)\n\n```\nMeowww ^^\n```")
+                    .setImage("https://media.tenor.com/4OO1_Mh0DUoAAAPo/sword-isekai-reincarnated-as-a-sword.mp4")
+                    .setColor(Color.decode("#ff80ff"))
+                    .setImage("https://c.tenor.com/4OO1_Mh0DUoAAAAd/tenor.gif")
+                        .addField("Liste des commandesss","</info:1362414034439372871> - Affiche ceci 0-0\n\n</activitervocale default:1350205082372800522> - Permet de voir qui perd le plus de temps en voc ! \n\n</activitervocale limite:1350205082372800522>  - Permet de faire le classement ci dessus avec une limite ><\n\n</profil:1347569231897559124> - Affiche votre profil ou celui d'un autre utilisateur \n\n </test:1348615595733553234> - Ptetre tu peux avoir un macdo ?",false)
+                .build()).queue();
+    }
+
     private void ActiviterVocal(SlashCommandInteractionEvent event) {
         event.deferReply().queue();
         int limit = (event.getOption("limite") != null) ? event.getOption("limite").getAsInt() : 10;
@@ -63,6 +86,10 @@ public class CommandsList extends ListenerAdapter
     private void test(SlashCommandInteractionEvent event)
     {
         event.reply("Oui oui tu veux quoi ? un macdo ? UwU ~~").setEphemeral(true).queue();
+        /*for(Command i  : api.retrieveCommands().complete() )
+        {
+            log.info(i.getName()+" "+i.getId());
+        }*/
     }
 
     private void AdminReg(SlashCommandInteractionEvent event)
