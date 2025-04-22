@@ -68,7 +68,7 @@ public class CommandsList extends ListenerAdapter
                 new EmbedBuilder()
                     .setAuthor("Yuki", "https://github.com/Lou-fr", api.getUserById("478641900887474206").getAvatarUrl())
                     .setTitle("Yuka a propos ~~")
-                    .setDescription("Salut mwa c'est yuka un bot développer par yuki pour les serveurs d'amis ou bien les sien ^^\n\nJe suis coder en java et tu peux retrouver tous mon code sur [Github !](https://github.com/Lou-fr/Yuka_Discord_Bot)\n\n```\nMeowww ^^\n```")
+                    .setDescription("Salut mwa c'est yuka un bot développé par yuki pour les serveurs d'amis ou bien les siens ^^\n\nJe suis codé en java et tu peux retrouver tout mon code sur [Github !](https://github.com/Lou-fr/Yuka_Discord_Bot)\n\n```\nMeowww ^^\n```")
                     .setImage("https://media.tenor.com/4OO1_Mh0DUoAAAPo/sword-isekai-reincarnated-as-a-sword.mp4")
                     .setColor(Color.decode("#ff80ff"))
                     .setImage("https://c.tenor.com/4OO1_Mh0DUoAAAAd/tenor.gif")
